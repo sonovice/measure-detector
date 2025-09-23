@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Model weights
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.egg-info/
+.venv/

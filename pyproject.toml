@@ -1,0 +1,45 @@
+[project]
+name = "measure-detector"
+version = "1.2.0"
+description = "Measure Detector Microservice"
+authors = [
+    { name = "Simon Waloschek", email = "waloschek@pm.me" },
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.117.1",
+    "gunicorn>=23.0.0",
+    "huggingface-hub>=0.35.0",
+    "loguru>=0.7.3",
+    "numpy>=2.3.3",
+    "opencv-python-headless>=4.11.0.86",
+    "pillow>=11.3.0",
+    # Starlette is pulled in by FastAPI; keep implicit
+    "uvicorn>=0.32.0",
+    "torch>=2.8.0",
+    "python-multipart>=0.0.20",
+    "pandas>=2.3.2",
+    "torchvision>=0.23.0",
+    "matplotlib>=3.10.6",
+    "seaborn>=0.13.2",
+    "setuptools<81",
+    "ultralytics>=8.0.0",
+    "gitpython>=3.1.45",
+    "smmap>=5.0.2",
+    "gitdb>=4.0.12",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[build-system]
+requires = [
+    "setuptools<81",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
