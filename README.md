@@ -2,6 +2,8 @@
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-red.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ![Docker ready](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+![OpenAPI](https://img.shields.io/badge/OpenAPI-docs-85EA2D?logo=openapiinitiative&logoColor=white)
+![Redocly](https://img.shields.io/badge/Redocly-docs-85EA2D?logo=redocly)
 
 ![Teaser](res/output.jpg)
 
@@ -44,13 +46,15 @@ The bounding boxes provided in the response are normalized values relative to th
 Here is an example using `curl` to get bounding boxes for one or more images:
 ```shell
 $> curl -s \
-  -F 'files=@/path/to/page1.jpg' \
-  -F 'files=@/path/to/page2.jpg' \
-  -F "auto=y" \
-  -F "pretty=y" \
-  localhost:8123/json
+   -F 'files=@/path/to/page1.jpg' \
+   -F 'files=@/path/to/page2.jpg' \
+   -F "auto=y" \
+   -F "pretty=y" \
+   localhost:8123/json
+```
 
-# example output
+```json
+// example output
 {
   "process_time": 227,
   "results": [
@@ -82,9 +86,9 @@ $> curl -s \
 To obtain an MEI file across multiple images:
 ```shell
 $> curl -s \
-  -F 'files=@/path/to/page1.jpg' \
-  -F 'files=@/path/to/page2.jpg' \
-  localhost:8123/mei -o measures.mei
+   -F 'files=@/path/to/page1.jpg' \
+   -F 'files=@/path/to/page2.jpg' \
+   localhost:8123/mei -o measures.mei
 ```
 
 ### Options
@@ -104,13 +108,8 @@ Submit exactly one file using `multipart/form-data` to receive a JPEG with overl
 curl -s \
   -F 'file=@/path/to/page.jpg' \
   -F 'auto=y' \
-  localhost:8123/debug > debug.jpg
+  localhost:8123/debug -o debug.jpg
 ```
-
-Example debug overlay result:
-
-![Debug overlay example](res/output.jpg)
-
 
 ## Notes
 - The server automatically resizes all incoming images to 1280px (long edge). For larger images, it's recommended to resize them client-side before uploading to reduce transfer time.
@@ -120,7 +119,7 @@ Example debug overlay result:
  - OpenAPI docs are available at `http://localhost:8123/docs` and `http://localhost:8123/redoc`.
  - CORS is enabled permissively by default for convenience; restrict origins in production via reverse proxy or by editing the middleware configuration.
 
-## 📦 Model Weights via Hugging Face Hub
+## Model Weights via Hugging Face Hub
 
 The YOLOv5 weights (`model.pt`) are not stored in this repository. They are downloaded at startup from Hugging Face Hub.
 
