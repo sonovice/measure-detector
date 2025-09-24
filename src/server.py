@@ -33,7 +33,7 @@ warnings.filterwarnings(
 app = FastAPI(
     title="Measure Detector",
     description="YOLOv5-based Measure Detector Microservice",
-    version="0.1.0",
+    version="1.2.0",
     contact={"name": "Simon Waloschek", "email": "waloschek@pm.me"},
 )
 
